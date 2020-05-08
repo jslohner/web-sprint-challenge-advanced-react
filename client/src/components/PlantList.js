@@ -5,7 +5,8 @@ export default class PlantList extends Component {
 	constructor() {
 		super();
 		this.state = {
-			plants: []
+			plants: [],
+			filterInput: ""
 		}
 	}
 
@@ -13,6 +14,30 @@ export default class PlantList extends Component {
 	// state = {
 	// 	plants: []
 	// }
+
+	filterPlants = e => {
+		this.setState({
+			filterInput: e.target.value
+		});
+		// console.log(this.state.filterInput);
+		// this.state.plants.filter(plant => {
+		// 	plant.name.includes(this.state.filterInput);
+		// })
+		// console.log(filteredPlants);
+		// this.setState({
+		// 	plants: [this.state.plants.filter(plant => {
+		// 		plant.name.includes(this.state.filterInput);
+		// 	})]
+		// })
+		// console.log(this.state.plants);
+		// console.log(this.state.plants);
+		// this.setState({
+		// 	plants: filteredPlants
+		// });
+		// this.state.plants.filter(plant => {
+		// 	console.log(plant.name);
+		// })
+	}
 
 	componentDidMount() {
 		axios.get('http://localhost:3333/plants')
@@ -30,6 +55,7 @@ export default class PlantList extends Component {
 	render() {
 		return (
 			<main className="plant-list">
+				<input type="search" placeholder="filter plants" onChange={this.filterPlants}/>
 				{this.state?.plants?.map((plant) => (
 					<div className="plant-card" key={plant.id}>
 						<img className="plant-image" src={plant.img} alt={plant.name} />
