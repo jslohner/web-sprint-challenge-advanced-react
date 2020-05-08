@@ -28,15 +28,26 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
+
 1. Explain how to build stateful class components.
+To build stateful class components you need to initialize state in the class constructor, or if you don't have anything else to put in the constructor you can just define state. To initialize state, you create an object that has keys corresponding to what state you want and then the values you give the keys is what state you use. You can then use that state in your class components to give functionality to the webpage and you can pass state as props to different components as well.
 
 2. Describe the different phases of the component lifecycle.
+1) Mounting Phase - This is when the component is initialized by using the constructor and then it is rendered and the DOM is updated by react. After that happens the function componentDidMount() runs which is basically just saying that the component was properly rendered.
+2) Updating Phase - This phase happens whenever the state of the component is updated and it has a similar process to the mounting phase. The component receives any new props and then sets the new state of the component. After that, the component is re-rendered and react updates the DOM again, and then the function componentDidUpdate() runs, which also basically means the component did update and was rendered properly.
+3) Unmounting Phase - This phase is when the component is unmounted and removed from the DOM, and the function componentWillUnmount() runs.
 
 3. Demonstrate an understanding of class component lifecycle methods.
+1) componentDidMount() - This function runs after the component is fully rendered and added to the DOM, so you can use it for things you only want to happen after the component fully loads, ex: axios requests. It is very similar to the useEffect hook with a dependency array.
+2)componentDidUpdate() - This function is like the componentDidMount() function but it runs every time the component has been fully updated successfully.
+3)componentWillUnmount() - This function runs when the component is removed from the DOM, and is used for cleaning things up from the components that might not be removed automatically.
 
 4. Define stateful logic.
+Stateful logic is "logic" (methods or functions) that is built into components which most of the time does something with the state of the component. ex: toggling an on/off switch for a website setting.
 
 5. Describe how to test a React component with React Testing Library.
+You first need to create a test file, in the form (file.test.js), and then you import the things you need for testing from react testing library and the file you want to test. You then can use react testing library to "grab" elements from the DOM and then run tests on those elements such as user input tests or assertions. A great way to go about testing is by using the AAA method - Arrange, Act, Assert.
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
